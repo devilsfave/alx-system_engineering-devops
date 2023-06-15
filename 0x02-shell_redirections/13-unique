@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Read the input from standard input
+# Use awk to count the occurrences of each word and store them in an associative array
+# Print only the words that appear exactly once
+awk '{
+    count[$0]++
+}
+
+END {
+    for (word in count) {
+        if (count[word] == 1) {
+            print word
+        }
+    }
+}' | sort

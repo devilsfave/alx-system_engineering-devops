@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Use ls to list files in the current directory sorted by modification time (newest first)
+# Limit the output to the 10 newest files
+# Redirect the error output to /dev/null to ignore permission denied errors
+ls -lt --group-directories-first 2>/dev/null | head -n 11 | awk '{print $9}'

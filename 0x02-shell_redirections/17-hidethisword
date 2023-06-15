@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Use grep with -v option to display lines in /etc/passwd that do not contain "bin"
+grep -v "bin" /etc/passwd

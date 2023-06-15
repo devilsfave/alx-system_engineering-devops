@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Use grep with a regular expression to display lines starting with a letter in /etc/ssh/sshd_config
+grep '^[[:alpha:]]' /etc/ssh/sshd_config

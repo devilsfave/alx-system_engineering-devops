@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Best School" > '*\\\'"Best School"\''\\*$?*****:)'  # Note the quoting of special characters

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Use grep with -A option to display lines containing "root" and 3 lines after them in /etc/passwd
+grep -A 3 "root" /etc/passwd
