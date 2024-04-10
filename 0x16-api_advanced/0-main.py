@@ -1,15 +1,13 @@
 #!/usr/bin/python3
 """
-0-main
+0-main: Script to call number_of_subscribers function
 """
-
 import sys
-import requests  # Import requests library
+from . import __0_subs  # Import from current directory
 
 if __name__ == '__main__':
+    number_of_subscribers = __0_subs.number_of_subscribers
     if len(sys.argv) < 2:
         print("Please pass an argument for the subreddit to search.")
     else:
-        subreddit = sys.argv[1]
-        subscribers = __import__('0-subs').number_of_subscribers(subreddit)
-        print("{:d}".format(subscribers))
+        print("{:d}".format(number_of_subscribers(sys.argv[1])))
