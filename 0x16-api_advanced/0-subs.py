@@ -1,29 +1,18 @@
 #!/usr/bin/python3
-"""
-0-subs: Module with number_of_subscribers function
-"""
-import requests
+"""Module for task 1"""
 
 
-def number_of_subscribers(subreddit):
-    """
-    Queries Reddit API for subscriber count of a subreddit.
+def top_ten(subreddit):
+    """Queries the Reddit API and returns the top 10 hot posts
+    of the subreddit"""
+    import requests
 
-    Args:
-        subreddit: The name of the subreddit to query.
-
-    Returns:
-        The number of subscribers for the subreddit, or 0 if invalid.
-    """
-
-    url = f"https://www.reddit.com/r/{subreddit}/about.json?allow_overridden_subreddit=true"
-    headers = {"User-Agent": "my_user_agent"}  # Replace with your custom User-Agent
-
-    response = requests.get(url, headers=headers, allow_redirects=False)
-
-    if response.status_code == 200:
-        data = response.json()
-        return data.get("data", {}).get("subscribers", 0)
+    sub_info = requests.get("https://www.reddit.com/r/{}/hot.json?limit=10"
+                            .format(subreddit),
+                            headers={"User-Agent": "My-User-Agent"},
+                            allow_redirects=False)
+    if sub_info.status_code >= 300:
+        print('None')
     else:
-        return 0
-
+        [print(child.get("data").get("title"))
+         for child in sub_info.json().get("data").get("children")]
